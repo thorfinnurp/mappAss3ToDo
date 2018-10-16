@@ -13,8 +13,7 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <Main />
-      </Provider>,
-      document.getElementById('root')
+      </Provider>
     );
   }
 }
