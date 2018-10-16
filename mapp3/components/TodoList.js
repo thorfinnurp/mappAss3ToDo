@@ -18,7 +18,6 @@ const TodoList = ({ todos, toggleTodo, deleteTodo }) => (
                 underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
                 onPress: () => { deleteTodo(todo.id) }
             }]}
-            autoClose='true'
             backgroundColor= 'transparent'>
             
             <Switch

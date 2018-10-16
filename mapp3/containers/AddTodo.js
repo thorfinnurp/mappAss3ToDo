@@ -20,7 +20,6 @@ class AddTodo extends Component {
     }
 
     addTodo = (text, image) => {
-
         this.props.dispatch({type: 'ADD_TODO', text, image});
         this.setState({text: ''});
         this.setState({image: null});
@@ -36,8 +35,7 @@ class AddTodo extends Component {
     
         if (!result.cancelled) {
           this.setState({ image: result.uri });
-        }
-        
+        }    
       };
 
     render() {
@@ -49,19 +47,18 @@ class AddTodo extends Component {
                     value ={this.state.text}
                     placeholder="Take the cat out"
                     style={{borderWidth: 1, borderColor: '#f2f2e1', backgroundColor: '#eaeaea', height: 50, flex: 1, padding: 5}}
-                 />
-                    <Button
+                />
+                {image &&
+                <Image source={{ uri: image }} style={{ width: 50, height: 70 }} />}
+                <Button
                     title="add image"
                     onPress={this._pickImage}
-                    />
-                    {image &&
-                    <Image source={{ uri: image }} style={{ width: 50, height: 70 }} />}
-                    
-                    <TouchableOpacity onPress={()=> this.addTodo(this.state.text, this.state.image)}>
-                    <View style={{height: 50, backgroundColor: '#eaeaea', alignItems: 'center', justifyContent: 'center'}}>
-                        <Ionicons name="md-add" size={30} />
-                    </View>
-                </TouchableOpacity>
+                />
+                
+                <Button
+                    title="submit"
+                    onPress={()=> this.addTodo(this.state.text, this.state.image)}
+                />    
             </View>
         );
     }
