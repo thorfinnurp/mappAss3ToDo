@@ -30,7 +30,7 @@ const TodoList = ({ todos, toggleTodo, deleteTodo }) => (
               />
             </View>
             <View style={styles.image}>
-              <Lightbox activeProps={{ style: { style: styles.lightbox } }}>
+              <Lightbox activeProps={{ width: 500, height: 500}}>
                 <Image
                   style={styles.image}
                   source={{ uri: todo.image }}
