@@ -26,10 +26,12 @@ const TodoList = ({ todos, toggleTodo, deleteTodo }) => (
                     onValueChange = {() => toggleTodo(todo.id)}
                     value = {todo.completed}/>
                     </View>
+                    <View style={styles.image}>
                     <Image
-                        style={{width: todo.completed ? 0 : 50, height: todo.completed ? 0 : 50}}
+                        style={{ width: todo.completed ? 0 : 50, height: todo.completed ? 0 : 50}}
                         source={{uri: todo.image}} 
                     />
+                    </View>
                     <View style={styles.text}>
                     <Text style={{
                         fontSize: 24,
@@ -51,10 +53,17 @@ const styles = StyleSheet.create({
     },
     row: {
         flexDirection: 'row',
-        alignItems: 'stretch',
+        borderBottomColor: 'black',
+        borderBottomWidth: 2.5,
+        padding: 10,
     },
     switch: {
+        width:'15%',
+    },
+    image: {
+        width:'15%',
     },
     text: {
-    }
+        width:'70%',
+    },
 });
