@@ -30,8 +30,10 @@ const TodoList = ({ todos, toggleTodo, deleteTodo }) => (
             </Text>
     
             <Image
-          style={{width: 50, height: 50}}
+          style={{width: todo.completed ? 0 : 50, height: todo.completed ? 0 : 50}}
           source={{uri: todo.image}}
+          
+          
         />
             </Swipeout>
             </View>

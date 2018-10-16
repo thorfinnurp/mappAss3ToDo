@@ -40,10 +40,11 @@ class AddTodo extends Component {
         });
     
         console.log(result);
-    
+        if (cameraPerm === 'granted' && cameraRollPerm === 'granted') {
         if (!result.cancelled) {
           this.setState({ image: result.uri });
         }
+    }
 
       };
 
