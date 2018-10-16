@@ -10,7 +10,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 
 import { Button, Image } from 'react-native';
-import { ImagePicker } from 'expo';
+import { ImagePicker, Permissions } from 'expo';
 
 class AddTodo extends Component {
 
@@ -26,7 +26,15 @@ class AddTodo extends Component {
     }
 
     _pickImage = async () => {
-        let result = await ImagePicker.launchImageLibraryAsync({
+        const {
+            status: cameraPerm
+          } = await Permissions.askAsync(Permissions.CAMERA);
+      
+          const {
+            status: cameraRollPerm
+          } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+        
+          let result = await ImagePicker.launchCameraAsync({
           allowsEditing: true,
           aspect: [4, 3],
         });
@@ -35,7 +43,8 @@ class AddTodo extends Component {
     
         if (!result.cancelled) {
           this.setState({ image: result.uri });
-        }    
+        }
+
       };
 
     render() {
