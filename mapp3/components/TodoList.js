@@ -30,9 +30,9 @@ const TodoList = ({ todos, toggleTodo, deleteTodo }) => (
                     <View style={styles.image}>
                     <Lightbox activeProps={{style: {width: 500, height: 500}}}>
                     <Image
-                        style={{ width: 50, height: 50 }}
+                        style={{ width: 50, height: 50, opacity: todo.completed ? 0.3 : 1 }}
                         source={{uri: todo.image}} 
-                    />
+                    /> 
                     </Lightbox>
                     </View>
                     <View style={styles.text}>
