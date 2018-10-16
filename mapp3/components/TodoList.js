@@ -27,8 +27,8 @@ const TodoList = ({ todos, toggleTodo, deleteTodo }) => (
                     value = {todo.completed}/>
                     </View>
                     <Image
-                        style={{width: 50, height: 50}}
-                        source={{uri: todo.image}}
+                        style={{width: todo.completed ? 0 : 50, height: todo.completed ? 0 : 50}}
+                        source={{uri: todo.image}} 
                     />
                     <View style={styles.text}>
                     <Text style={{
