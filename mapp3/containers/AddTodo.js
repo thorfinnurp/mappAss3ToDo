@@ -43,14 +43,12 @@ class AddTodo extends Component {
           allowsEditing: true,
           aspect: [4, 3],
         });
-    
-        console.log(result);
-        if (cameraPerm === 'granted' && cameraRollPerm === 'granted') {
-        if (!result.cancelled) {
-          this.setState({ image: result.uri });
-        }
-    }
 
+        if (cameraPerm === 'granted' && cameraRollPerm === 'granted') {
+            if (!result.cancelled) {
+                this.setState({ image: result.uri });
+            }
+        }
       };
 
     render() {
