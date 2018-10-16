@@ -62,15 +62,17 @@ class AddTodo extends Component {
                     style={{borderWidth: 1, borderColor: '#f2f2e1', backgroundColor: '#eaeaea', height: 50, flex: 1, padding: 5}}
                 />
                 {image &&
-                <Image source={{ uri: image }} style={{ width: 50, height: 70 }} />}
+                <Image source={{ uri: image }} style={{ width: 50, height: 50 }} />}
                 <Button
                     title="add image"
                     onPress={this._pickImage}
+                    color= 'blue'
                 />
                 
                 <Button
                     title="submit"
                     onPress={()=> this.addTodo(this.state.text, this.state.image)}
+                    
                 />    
             </View>
         );
