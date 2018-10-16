@@ -28,9 +28,9 @@ const TodoList = ({ todos, toggleTodo, deleteTodo }) => (
                     value = {todo.completed}/>
                     </View>
                     <View style={styles.image}>
-                    <Lightbox activeProps={{style: {width: 500, height: 500}}}>
+                    <Lightbox activeProps={{style: {styles: lightbox}}}>
                     <Image
-                        style={{ width: 50, height: 50 }}
+                        style={styles.image}
                         source={{uri: todo.image}} 
                     />
                     </Lightbox>
@@ -76,4 +76,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    lightbox: {
+        width: 500, height: 500
+
+    }
 });
