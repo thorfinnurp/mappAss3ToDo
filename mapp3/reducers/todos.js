@@ -1,26 +1,25 @@
-let nextId = 0
+let nextId = 0;
 const todos = (state = [], action) => {
-    switch (action.type) {
-        case 'ADD_TODO':
-            return [
-                ...state, {
-                    id: nextId++,
-                    text: action.text,
-                    completed: false,
-                    image: action.image
-                }
-            ]
+  switch (action.type) {
+    case 'ADD_TODO':
+      return [
+        ...state, {
+          id: nextId++,
+          text: action.text,
+          completed: false,
+          image: action.image,
+        },
+      ];
 
-        case 'TOGGLE_TODO':
-            return state.map(todo =>
-                (todo.id === action.id)
-                    ? { ...todo, completed: !todo.completed } :
-                    todo)
-        case 'DELETE_TODO':
-            return state.filter(({ id }) => id !== action.id);
-        default:
-            return state
-    }
-}
+    case 'TOGGLE_TODO':
+      return state.map(todo => ((todo.id === action.id)
+        ? { ...todo, completed: !todo.completed }
+        : todo));
+    case 'DELETE_TODO':
+      return state.filter(({ id }) => id !== action.id);
+    default:
+      return state;
+  }
+};
 
-export default todos
+export default todos;

@@ -1,53 +1,57 @@
-import React from "react";
+import React from 'react';
 import {
-    View,
-    Text,
-    Image,
-    StyleSheet,
-    Switch
-} from "react-native";
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  Switch,
+} from 'react-native';
 import Swipeout from 'react-native-swipeout';
 import Lightbox from 'react-native-lightbox';
 
 const TodoList = ({ todos, toggleTodo, deleteTodo }) => (
-    <View style={styles.container}>
-        {todos.map(todo =>
-            <View key={todo.id}>
-                <Swipeout right={[{
-                    text: 'Delete',
-                    backgroundColor: 'red',
-                    underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
-                    onPress: () => { deleteTodo(todo.id) }
-                }]}
-                backgroundColor= 'transparent'
-                >
-                <View style={styles.row}>
-                    <View style={styles.switch}>
-                    <Switch
-                    onValueChange = {() => toggleTodo(todo.id)}
-                    value = {todo.completed}/>
-                    </View>
-                    <View style={styles.image}>
-                    <Lightbox activeProps={{style: {styles: lightbox}}}>
-                    <Image
-                        style={styles.image}
-                        source={{uri: todo.image}} 
-                    />
-                    </Lightbox>
-                    </View>
-                    <View style={styles.text}>
-                    <Text style={{
-                        fontSize: 24,
-                        textDecorationLine: todo.completed ? 'line-through' : 'none'
-                    }}>{todo.text}
-                    </Text>
-                    </View>
-                </View> 
-                </Swipeout>
+  <View style={styles.container}>
+    {todos.map(todo => (
+      <View key={todo.id}>
+        <Swipeout
+          right={[{
+            text: 'Delete',
+            backgroundColor: 'red',
+            underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
+            onPress: () => { deleteTodo(todo.id); },
+          }]}
+          backgroundColor="transparent"
+        >
+          <View style={styles.row}>
+            <View style={styles.switch}>
+              <Switch
+                onValueChange={() => toggleTodo(todo.id)}
+                value={todo.completed}
+              />
             </View>
-        )}
-    </View>
-)
+            <View style={styles.image}>
+              <Lightbox activeProps={{ style: { style: styles.lightbox } }}>
+                <Image
+                  style={styles.image}
+                  source={{ uri: todo.image }}
+                />
+              </Lightbox>
+            </View>
+            <View style={styles.text}>
+              <Text style={{
+                fontSize: 24,
+                textDecorationLine: todo.completed ? 'line-through' : 'none',
+              }}
+              >
+                {todo.text}
+              </Text>
+            </View>
+          </View>
+        </Swipeout>
+      </View>
+    ))}
+  </View>
+);
 export default TodoList;
 
 const styles = StyleSheet.create({
