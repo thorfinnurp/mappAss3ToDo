@@ -6,7 +6,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    toggleTodo: id => dispatch({ type: 'TOGGLE_TODO', id })
+    toggleTodo: id => dispatch({ type: 'TOGGLE_TODO', id }),
+    deleteTodo: id => dispatch({ type: 'DELETE_TODO', id })
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList)
