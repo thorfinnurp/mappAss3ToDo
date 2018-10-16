@@ -37,6 +37,8 @@ class AddTodo extends Component {
       const result = await ImagePicker.launchCameraAsync({
         allowsEditing: true,
         aspect: [4, 3],
+
+        
       });
 
       if (cameraPerm === 'granted' && cameraRollPerm === 'granted') {
@@ -46,6 +48,8 @@ class AddTodo extends Component {
       }
     };
 
+
+
     render() {
       const { image } = this.state;
       return (
@@ -54,22 +58,20 @@ class AddTodo extends Component {
             onChangeText={text => this.setState({ text })}
             value={this.state.text}
             placeholder="Take the cat out"
-            style={{
-              borderWidth: 1, borderColor: '#f2f2e1', backgroundColor: '#eaeaea', height: 50, flex: 1, padding: 5,
-            }}
+            style={ styles.textInput}
           />
           {image
                 && <Image source={{ uri: image }} style={{ width: 50, height: 50 }} />}
           <TouchableHighlight onPress={() => this._pickImage()}>
             <Image
-              style={{ width: 50, height: 50 }}
+              style={styles.image}
               source={{ uri: 'https://image.freepik.com/free-icon/camera-to-take-photos_318-60174.jpg' }}
             />
           </TouchableHighlight>
 
           <TouchableHighlight onPress={() => this.addTodo(this.state.text, this.state.image)}>
             <Image
-              style={{ width: 50, height: 50 }}
+              style={styles.image}
               source={{ uri: 'https://user-prompt.com/wp-content/uploads/sichern_unter_rounded.png' }}
             />
           </TouchableHighlight>
@@ -80,9 +82,22 @@ class AddTodo extends Component {
 export default connect()(AddTodo);
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    image:{
+        width: 50, 
+        height: 50
+    },
+    textInput: {
+        borderWidth: 1, 
+        borderColor: '#f2f2e1', 
+        backgroundColor: '#eaeaea',
+        height: 50, 
+        flex: 1, 
+        padding: 5
+
+    }
 });

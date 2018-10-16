@@ -30,9 +30,9 @@ const TodoList = ({ todos, toggleTodo, deleteTodo }) => (
               />
             </View>
             <View style={styles.image}>
-              <Lightbox activeProps={{ style: { width: 500, height: 500 } }}>
+              <Lightbox activeProps={{ style: { style: styles.lightbox } }}>
                 <Image
-                  style={{ width: 50, height: 50, opacity: todo.completed ? 0.3 : 1 }}
+                  style={styles.image}
                   source={{ uri: todo.image }}
                 />
               </Lightbox>
@@ -55,27 +55,33 @@ const TodoList = ({ todos, toggleTodo, deleteTodo }) => (
 export default TodoList;
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-  },
-  row: {
-    flexDirection: 'row',
-    borderBottomColor: 'black',
-    borderBottomWidth: 2.5,
-    padding: 10,
-  },
-  switch: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '15%',
-    transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }],
-  },
-  image: {
-    width: '15%',
-  },
-  text: {
-    width: '70%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        padding: 20,
+    },
+    row: {
+        flexDirection: 'row',
+        borderBottomColor: 'black',
+        borderBottomWidth: 2.5,
+        padding: 10,
+    },
+    switch: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width:'15%',
+        transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }],
+    },
+    image: {
+        height: 50,
+        width: 50,
+        width:'15%',
+    },
+    text: {
+        width:'70%',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    lightbox: {
+        width: 500, height: 500
+
+    }
 });
