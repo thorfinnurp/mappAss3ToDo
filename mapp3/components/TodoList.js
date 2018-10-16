@@ -7,6 +7,7 @@ import {
     Switch
 } from "react-native";
 import Swipeout from 'react-native-swipeout';
+import Lightbox from 'react-native-lightbox';
 
 const TodoList = ({ todos, toggleTodo, deleteTodo }) => (
     <View style={styles.container}>
@@ -27,10 +28,12 @@ const TodoList = ({ todos, toggleTodo, deleteTodo }) => (
                     value = {todo.completed}/>
                     </View>
                     <View style={styles.image}>
+                    <Lightbox activeProps={{style: {width: 500, height: 500}}}>
                     <Image
                         style={{ width: todo.completed ? 0 : 50, height: todo.completed ? 0 : 50}}
                         source={{uri: todo.image}} 
                     />
+                    </Lightbox>
                     </View>
                     <View style={styles.text}>
                     <Text style={{
@@ -58,12 +61,19 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     switch: {
+        alignItems: 'center',
+        justifyContent: 'center',
         width:'15%',
+        transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }],
     },
     image: {
+        height: 50,
+        width: 50,
         width:'15%',
     },
     text: {
         width:'70%',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 });
