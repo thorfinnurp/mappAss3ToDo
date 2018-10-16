@@ -4,6 +4,7 @@ import {
     Text,
     StyleSheet,
     TextInput,
+    TouchableHighlight,
     TouchableOpacity
 } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
@@ -65,17 +66,26 @@ class AddTodo extends Component {
                 />
                 {image &&
                 <Image source={{ uri: image }} style={{ width: 50, height: 50 }} />}
-                <Button
-                    title="add image"
-                    onPress={this._pickImage}
-                    color= 'blue'
-                />
+
+            
+
+                <TouchableHighlight onPress={() => this._pickImage()}>
+                <Image
+                    style={{width: 50, height: 50}}
+                    source={{uri: 'https://image.freepik.com/free-icon/camera-to-take-photos_318-60174.jpg'}}
+                    />
+                </TouchableHighlight>
+
+                <TouchableHighlight onPress={() => this.addTodo(this.state.text, this.state.image)}>
+                <Image
+                    style={{width: 50, height: 50}}
+                    source={{uri: 'https://user-prompt.com/wp-content/uploads/sichern_unter_rounded.png'}}
+                    />
+                </TouchableHighlight>
+
                 
-                <Button
-                    title="submit"
-                    onPress={()=> this.addTodo(this.state.text, this.state.image)}
-                    
-                />    
+                
+                
             </View>
         );
     }
