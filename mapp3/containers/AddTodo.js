@@ -20,9 +20,14 @@ class AddTodo extends Component {
     }
 
     addTodo = (text, image) => {
-        this.props.dispatch({type: 'ADD_TODO', text, image});
-        this.setState({text: ''});
-        this.setState({image: null});
+        if(image == null && text == '') {
+            alert('Image and text cant be empty');
+        }
+        else {
+            this.props.dispatch({type: 'ADD_TODO', text, image});
+            this.setState({text: ''});
+            this.setState({image: null});
+        }
     }
 
     _pickImage = async () => {
