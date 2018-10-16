@@ -58,20 +58,20 @@ class AddTodo extends Component {
             onChangeText={text => this.setState({ text })}
             value={this.state.text}
             placeholder="Take the cat out"
-            style={{ style: styles.textInput}}
+            style={ styles.textInput}
           />
           {image
                 && <Image source={{ uri: image }} style={{ width: 50, height: 50 }} />}
           <TouchableHighlight onPress={() => this._pickImage()}>
             <Image
-              style={{ style: styles.image}}
+              style={styles.image}
               source={{ uri: 'https://image.freepik.com/free-icon/camera-to-take-photos_318-60174.jpg' }}
             />
           </TouchableHighlight>
 
           <TouchableHighlight onPress={() => this.addTodo(this.state.text, this.state.image)}>
             <Image
-              style={{ style: styles.image}}
+              style={styles.image}
               source={{ uri: 'https://user-prompt.com/wp-content/uploads/sichern_unter_rounded.png' }}
             />
           </TouchableHighlight>
