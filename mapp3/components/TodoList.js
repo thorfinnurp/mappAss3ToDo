@@ -9,6 +9,37 @@ import {
 import Swipeout from 'react-native-swipeout';
 import Lightbox from 'react-native-lightbox';
 
+const styles = StyleSheet.create({
+  container: {
+    padding: 20,
+  },
+  row: {
+    flexDirection: 'row',
+    borderBottomColor: 'black',
+    borderBottomWidth: 2.5,
+    padding: 10,
+  },
+  switch: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '15%',
+    transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }],
+  },
+  image: {
+    height: 50,
+    width: '15%',
+  },
+  text: {
+    width: '70%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  lightbox: {
+    width: 500, height: 500,
+
+  },
+});
+
 const TodoList = ({ todos, toggleTodo, deleteTodo }) => (
   <View style={styles.container}>
     {todos.map(todo => (
@@ -30,9 +61,9 @@ const TodoList = ({ todos, toggleTodo, deleteTodo }) => (
               />
             </View>
             <View style={styles.image}>
-              <Lightbox activeProps={{ width: 500, height: 500}}>
+              <Lightbox activeProps={{ width: 500, height: 500 }}>
                 <Image
-                  style={styles.image}
+                  style={{ width: 50, height: 50, opacity: todo.completed ? 0.3 : 1 }}
                   source={{ uri: todo.image }}
                 />
               </Lightbox>
@@ -53,35 +84,3 @@ const TodoList = ({ todos, toggleTodo, deleteTodo }) => (
   </View>
 );
 export default TodoList;
-
-const styles = StyleSheet.create({
-    container: {
-        padding: 20,
-    },
-    row: {
-        flexDirection: 'row',
-        borderBottomColor: 'black',
-        borderBottomWidth: 2.5,
-        padding: 10,
-    },
-    switch: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        width:'15%',
-        transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }],
-    },
-    image: {
-        height: 50,
-        width: 50,
-        width:'15%',
-    },
-    text: {
-        width:'70%',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    lightbox: {
-        width: 500, height: 500
-
-    }
-});
