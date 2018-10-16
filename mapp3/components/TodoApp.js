@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {
     View,
     Text,
+    ScrollView,
     StyleSheet
 } from "react-native";
 import AddTodo from '../containers/AddTodo';
@@ -11,10 +12,11 @@ class TodoApp extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <View>
-                    <ViewTodo/>
-                </View>
                 <AddTodo/>
+                <ScrollView>
+                    <ViewTodo/>
+                </ScrollView>
+                
             </View>
         );
     }
