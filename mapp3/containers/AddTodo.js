@@ -9,18 +9,39 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 
+import { Button, Image } from 'react-native';
+import { ImagePicker } from 'expo';
+
 class AddTodo extends Component {
 
     state = {
-        text:''
+        text:'',
+        image: null
     }
 
-    addTodo = (text) => {
-        this.props.dispatch({type: 'ADD_TODO', text});
+    addTodo = (text, image) => {
+
+        this.props.dispatch({type: 'ADD_TODO', text, image});
         this.setState({text: ''});
+        this.setState({image: null});
     }
+
+    _pickImage = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+          allowsEditing: true,
+          aspect: [4, 3],
+        });
+    
+        console.log(result);
+    
+        if (!result.cancelled) {
+          this.setState({ image: result.uri });
+        }
+        
+      };
 
     render() {
+        let { image } = this.state;
         return (
             <View style={{flexDirection:'row', marginHorizontal: 20}}>
                 <TextInput
@@ -28,8 +49,15 @@ class AddTodo extends Component {
                     value ={this.state.text}
                     placeholder="Take the cat out"
                     style={{borderWidth: 1, borderColor: '#f2f2e1', backgroundColor: '#eaeaea', height: 50, flex: 1, padding: 5}}
-                />
-                <TouchableOpacity onPress={()=> this.addTodo(this.state.text)}>
+                 />
+                    <Button
+                    title="add image"
+                    onPress={this._pickImage}
+                    />
+                    {image &&
+                    <Image source={{ uri: image }} style={{ width: 50, height: 70 }} />}
+                    
+                    <TouchableOpacity onPress={()=> this.addTodo(this.state.text, this.state.image)}>
                     <View style={{height: 50, backgroundColor: '#eaeaea', alignItems: 'center', justifyContent: 'center'}}>
                         <Ionicons name="md-add" size={30} />
                     </View>

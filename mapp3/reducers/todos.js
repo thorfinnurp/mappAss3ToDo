@@ -6,7 +6,8 @@ const todos = (state = [], action) => {
                 ...state, {
                     id: nextId++,
                     text: action.text,
-                    completed: false
+                    completed: false,
+                    image: action.image
                 }
             ]
 

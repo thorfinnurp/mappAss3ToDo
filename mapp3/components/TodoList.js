@@ -2,10 +2,12 @@ import React from "react";
 import {
     View,
     Text,
+    Image,
     StyleSheet,
     TouchableOpacity,
     Switch
 } from "react-native";
+
 
 const TodoList = ({ todos, toggleTodo }) => (
     <View style={{ padding: 20 }}>
@@ -17,7 +19,14 @@ const TodoList = ({ todos, toggleTodo }) => (
             <Text style={{
                 fontSize: 24,
                 textDecorationLine: todo.completed ? 'line-through' : 'none'
-            }}>{todo.text}</Text>
+            }}>{todo.text}
+            </Text>
+    
+            <Image
+          style={{width: 50, height: 50}}
+          source={{uri: todo.image}}
+        />
+            
             </View>
         )}
     </View>
