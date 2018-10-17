@@ -5,6 +5,7 @@ import {
   TextInput,
   TouchableHighlight,
   Image,
+  Button,
 } from 'react-native';
 import { connect } from 'react-redux';
 import { ImagePicker, Permissions } from 'expo';
@@ -31,10 +32,23 @@ const styles = StyleSheet.create({
 });
 
 class AddTodo extends Component {
-    state = {
+  constructor(props) {
+    super(props);
+    this.state = {
       text: '',
       image: null,
-    }
+      button: true,
+    };
+  }
+
+    switchView = () => {
+      const { button } = this.state;
+      if (button === true) {
+        this.setState({ button: false });
+      } else {
+        this.setState({ button: true });
+      }
+    };
 
     addTodo = (text, image) => {
       if (text === '') {
@@ -43,6 +57,7 @@ class AddTodo extends Component {
         this.props.dispatch({ type: 'ADD_TODO', text, image });
         this.setState({ text: '' });
         this.setState({ image: null });
+        this.switchView();
       }
     }
 
@@ -72,29 +87,38 @@ class AddTodo extends Component {
 
     render() {
       const { image } = this.state;
-      return (
-        <View style={{ flexDirection: 'row', marginHorizontal: 20 }}>
-          <TextInput
-            onChangeText={text => this.setState({ text })}
-            value={this.state.text}
-            placeholder="Take the cat out"
-            style={styles.textInput}
-          />
-          {image
-                && <Image source={{ uri: image }} style={{ width: 50, height: 50 }} />}
-          <TouchableHighlight onPress={() => this._pickImage()}>
-            <Image
-              style={styles.image}
-              source={{ uri: 'https://image.freepik.com/free-icon/camera-to-take-photos_318-60174.jpg' }}
+      const { button } = this.state;
+      if (!button) {
+        return (
+          <View style={{ flexDirection: 'row', marginHorizontal: 20 }}>
+            <TextInput
+              onChangeText={text => this.setState({ text })}
+              value={this.state.text}
+              placeholder="Take the cat out"
+              style={styles.textInput}
             />
-          </TouchableHighlight>
 
-          <TouchableHighlight onPress={() => this.addTodo(this.state.text, this.state.image)}>
-            <Image
-              style={styles.image}
-              source={{ uri: 'https://user-prompt.com/wp-content/uploads/sichern_unter_rounded.png' }}
-            />
-          </TouchableHighlight>
+            {image
+                  && <Image source={{ uri: image }} style={{ width: 50, height: 50 }} />}
+            <TouchableHighlight onPress={() => this._pickImage()}>
+              <Image
+                style={styles.image}
+                source={{ uri: 'https://image.freepik.com/free-icon/camera-to-take-photos_318-60174.jpg' }}
+              />
+            </TouchableHighlight>
+
+            <TouchableHighlight onPress={() => this.addTodo(this.state.text, this.state.image)}>
+              <Image
+                style={styles.image}
+                source={{ uri: 'https://user-prompt.com/wp-content/uploads/sichern_unter_rounded.png' }}
+              />
+            </TouchableHighlight>
+          </View>
+        );
+      }
+      return (
+        <View>
+          <Button title="What Todo ?" onPress={this.switchView} />
         </View>
       );
     }

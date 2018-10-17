@@ -16,9 +16,10 @@ const styles = StyleSheet.create({
 
 class TodoApp extends Component {
   render() {
+    
     return (
       <View style={styles.container}>
-        <AddTodo />
+        <AddTodo />       
         <ScrollView>
           <ViewTodo />
         </ScrollView>
